@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project 2 for Web Dev">
+
+    <!-- timerbar // matikan Meta Auto Refresh jika timerbar di matikan -->
+    <!-- <meta http-equiv="refresh" content="120"> -->
+
+    <title>Mobile Legends Admin</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../../asset/css/Dashboard.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../../asset/img/logo.png" type="image/x-icon">
+
+    <!-- font-awesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+</head>
+<body>
+    <!-- splash screen -->
+    <div id="loader"></div>
+
+    <!-- timerbar // matikan timerbar jika Meta Auto Refresh di matikan -->
+    <!-- <div class="timer-bar-container"><div id="timer" class="timer-bar" ></div></div> -->
+
+
+    <!-- Header -->
+    <header class="header">
+        <h4 class="judul-atas-banget">Heroes Mobile Legends ADMIN</h4>
+        <div class="menu">
+            <a href="#?1" class="menu-item">Banner</a>
+            <a href="#?2" class="menu-item">Data Table</a>
+        </div>
+        <div class="menu-right">
+            <p class="copyright-version">2023 <a href="http://colorfullyous.my.id/shortlink" target="_blank" rel="noopener noreferrer">Colorfullyous Graphitie</a> - Version 2.4.22</p>
+            <!-- <a href="#" class="tombol-logout" id="tombol-logout" aria-label="Logout Button" onclick="logoutFunctionhere()"><i class="fa fa-sign-out"></i></a> -->
+            <a class="tombol-logout buka-modal" id="tombol-logout" aria-label="Logout Button"><i class="fa fa-sign-out"></i></a>
+        </div>
+    </header>
+
+    <!-- Kontainer Paling Atas -->
+    <div class="kontainer-tombol" id="myHeader">
+        <!-- kontainer kiri -->
+        <div class="kontainer-tombol-kiri">
+            <button class="tombol" id="add-new"><i class="fa fa-plus"></i>Add Data</button>
+            <button class="tombol tombol-del" id="del-all-btn"><i class="fa fa-trash-alt"></i>Clear All Data</button>
+
+            <div class="tombol locksystem">
+                <input class="tombol tombol-del-all" id="del-all-box" type="checkbox" name="">
+                <label for="del-all-box"><i></i></label>
+            </div>  
+        </div>
+
+        <!-- kontainer kanan -->
+        <div class="kontainer-tombol-kanan">
+            <i class="fa fa-search icon-cari"></i>
+            <input type="text" placeholder="Search here ..." class="searchbar" id="searchme">
+            <!-- <button class="tombol">Cari</button> -->
+        </div>
+    </div>
+
+
+    <!-- TAB WELCOME ADMIN -->
+    <div class="kontainer-admin" id="?1">
+        <div class="kontainer-admin-kiri">
+            <span class="admin-username">Hii, Admin<i class="fa fa-check-circle"></i></span>
+            <h2 class="admin-title">Welcome Here!</h2>
+            <p class="admin-desc">Start input latest info of Mobile legends Heroes! Come on! admins, let's update the information. So what are you waiting for? Get back into the game and start exploring all the new content that Mobile Legends has to offer. With so many heroes, items, and game modes to choose from, there's never been a better time to jump in and start playing. Keep an eye out for future updates and releases, and we'll see you on the battlefield!</p>
+        </div>
+        <div class="kontainer-admin-kanan">
+
+        </div>
+    </div>
+
+
+    <!-- TAB TABLE DATA -->
+    <div class="kontainer-table" id="?2">
+        <!-- table nyaa -->
+        <table class="table">
+            <tr>
+                <th class="no">No.</th>
+                <th class="action">Action</th>
+                <th class="icon">Hero Icon</th>
+                <th class="name">Hero Name</th>
+                <th class="cost">Hero Cost</th>
+                <th class="role">Hero Role</th>
+                <th class="speciality">Hero Speciality</th>
+                <th class="laning">Hero Laning</th>
+                <th class="build">Hero Build</th>
+                <th class="passive">Hero Passive</th>
+                <th class="skill1">Hero Skill 1</th>
+                <th class="skill2">Hero Skill 2</th>
+                <th class="skill3">Hero Skill 3</th>
+                <th class="skill4">Hero Skill 4</th>
+                <th class="tips">Hero Trick&Tips</th>
+            </tr>
+
+            <tbody id="table-data">
+
+            </tbody>
+
+        </table>
+
+        <!-- modal nyaa -->
+        <div class="modal">
+
+            <!-- tombol close modal -->
+            <i class="fa fa-times tombol-close-modal"></i>
+            <h4 class="judul-modal-kanan">Data Edit</h4>
+
+            <div class="modal-kiri">
+                <!-- <h4 class="judul-modal">Data Edit</h4> -->
+                <div class="kotak-gambar">
+                    <img id="profile-pic" src="https://cdn.iconscout.com/icon/free/png-256/free-add-plus-3114469-2598247.png" alt="" width="128px" height="128px" class="gambar-profile">
+                    <input id="upload-field" type="file" class="input-gambar">
+                </div>
+                <span class="caption-profile">This is the Hero Icon Picture</span>
+            </div>
+
+            <div class="modal-kanan">
+                <form class="modal-kanan-form" id="register-form" >
+
+                    <div class="bungkus-modal-input">
+                        <label for="hname" class="label-input">Heroes Name</label>
+                        <span class="label-input-desc">Seperti contoh: <b>Balmond, Miya</b></span>
+
+                        <input type="text" required class="modal-input" id="hname" placeholder="Name">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hcost" class="label-input">Heroes Cost</label>
+                        <span class="label-input-desc">Biasa menggunakan <b>Battle Point, Diamond & Ticket</b></span>
+
+                        <input type="text" required class="modal-input" id="hcost" placeholder="Cost">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hrole" class="label-input">Heroes Role</label>
+                        <span class="label-input-desc">Role yang ada saat ini: <b>Fighter, Assassin, Mage, Tank, Support, & Marksman</b></span>
+
+                        <input type="text" required class="modal-input" id="hrole" placeholder="Role">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hspec" class="label-input">Heroes Speciality</label>
+                        <span class="label-input-desc">Speciality yang ada saat ini: <b>Burst, Charge, Chase, Control, Crowd Control, Damage, Guard, Magic Damage, Mixed Damage, Poke, Push, Reap, & Support</b></span>
+                        
+                        <input type="text" required class="modal-input" id="hspec" placeholder="Speciality">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hlane" class="label-input">Heroes Best Laning</label>
+                        <span class="label-input-desc">Best laning untuk masing-masing hero dan role, dari mulai: <b>Mid Laner, Exp Laner, Gold Laner, Jungler & Roamer</b></span>
+                        
+                        <input type="text" required class="modal-input" id="hlane" placeholder="Laning">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hbuild" class="label-input">Heroes Best Builds</label>
+                        <span class="label-input-desc">Silahkan pelajari penjelasan Berbagai Build didalam Game langsung!</span>
+                        
+                        <input type="text" required class="modal-input" id="hbuild" placeholder="Build">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hpassive" class="label-input">Passive Skill</label>
+                        <span class="label-input-desc">Passive Skill Hero, Skill yang tidak perlu harus di klik secara Manual</span>
+                        
+                        <input type="text" required class="modal-input" id="hpassive" placeholder="Passive">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hskill1" class="label-input">1st Skill</label>
+                        <span class="label-input-desc">Skill yang bisa jadi Kekuatan Utama Hero tersebut</span>
+                        
+                        <input type="text" required class="modal-input" id="hskill1" placeholder="Skill 1">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hskill2" class="label-input">2nd Skill</label>
+                        <span class="label-input-desc">Skill yang bisa jadi Kekuatan Utama Hero tersebut</span>
+                        
+                        <input type="text" required class="modal-input" id="hskill2" placeholder="Skill 2">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hskill3" class="label-input">3rd Skill</label>
+                        <span class="label-input-desc">Skill yang bisa jadi Kekuatan Utama Hero tersebut | bisa berupa <b>Skill Ultimate</b></span>
+                        
+                        <input type="text" required class="modal-input" id="hskill3" placeholder="Skill 3">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="hskill4" class="label-input">4th Skill</label>
+                        <span class="label-input-desc">Skill yang bisa jadi Kekuatan Utama Hero tersebut | bisa berupa <b></b> maupun <b>Skill Unique</b></span>
+                        
+                        <input type="text" required class="modal-input" id="hskill4" placeholder="Skill 4">
+                    </div>
+
+                    <div class="bungkus-modal-input">
+                        <label for="htips" class="label-input">Tips & Tricks</label>
+                        <span class="label-input-desc">Tips n Trick cara menggunakan hero</span>
+                        
+                        <input type="text" required class="modal-input" id="htips" placeholder="Tips & Trick">
+                    </div>
+
+                    <div class="kontainer-tombol-2">
+                        <button id="register-btn" class="tombol tombol-register"><i class="fa fa-add"></i>Save</button>
+                        <button id="update-btn" class="tombol tombol-update" disabled="disabled"><i class="fa fa-pen-square"></i>Update</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- modal logout -->
+    <div class="modal-logout-area modalnya-gada js-logout-modal">
+        <div class="modal-logout-overlay tutup-modal"></div>
+        <div class="bungkus-modal-logout">
+            <img src="../../asset/img/tanda-seru.svg" alt="tanda-seru" class="modal-logout-icon">
+            <h2 class="modal-logout-title">Are you sure you want to logout?</h2>
+            <div class="modal-logout-btn-box">
+                <a href="/index.html" class="modal-logout-btn">Yes</a>
+                <a class="modal-logout-btn tutup-modal">No</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <iframe class="loading" width="560" height="315" src="https://www.youtube.com/embed/69lBp_vjUNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe class="loading" width="560" height="315" src="https://www.youtube.com/embed/69lBp_vjUNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe class="loading" width="560" height="315" src="https://www.youtube.com/embed/69lBp_vjUNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe class="loading" width="560" height="315" src="https://www.youtube.com/embed/69lBp_vjUNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="../../asset/js/custom.js"></script>
+    <script src="../../asset/Js/side.js"></script>
+    <script src="../../asset/Js/login.js"></script>
+    <script src="../../asset/Js/darkmode.js"></script>
+    <script src="../../asset/Js/crud.js"></script>
+</body>
+</html>
